@@ -11,19 +11,30 @@
 </head>
 
 <body>
-    <ul id="app">
-        <li></li>
-    </ul>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                items: {
-
+<ul id="app">
+    <li v-for="(num,item) of items">
+        {{num}}
+        <!--{{ num }}-{{item.name}}-->
+    </li>
+</ul>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                {
+                    name: "张三"
+                }, {
+                    name: "李四"
+                },
+                {
+                    name: "王五"
                 }
-            }
-        })
-    </script>
+            ]
+        }
+    });
+    app.items.push({name: "赵六"});
+</script>
 </body>
 
 </html>
