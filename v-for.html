@@ -11,7 +11,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <ul id="app">
         <li v-for="(num,item) in items">
             {{num}}--{{item.message}}
@@ -32,32 +31,6 @@
             message: "three"
         });
     </script>
-=======
-<ul id="app">
-    <li v-for="(num,item) of items">
-        {{num}}
-        <!--{{ num }}-{{item.name}}-->
-    </li>
-</ul>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            items: [
-                {
-                    name: "张三"
-                }, {
-                    name: "李四"
-                },
-                {
-                    name: "王五"
-                }
-            ]
-        }
-    });
-    app.items.push({name: "赵六"});
-</script>
->>>>>>> 412f2fdf055215df62a9ce0e01bc9e056298d8fc
 </body>
 
 </html>

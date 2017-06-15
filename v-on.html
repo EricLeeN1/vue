@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on mode</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="jia">+</button>
+        <p>数量：{{shuliang}}</p>
+        <p>单价：{{danjia}}</p>
+        <hr>
+        <p>总价: {{zongjia}}</p>
+        <button>-</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                shuliang: 0,
+                danjia: 10,
+                zongjia: 0
+            },
+            methods: {
+                jia: function() {
+                    this.shuliang++;
+                    this.zongjia = this.shuliang * this.danjia
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
