@@ -17,7 +17,7 @@
         <p>单价：{{danjia}}</p>
         <hr>
         <p>总价: {{zongjia}}</p>
-        <button>-</button>
+        <button v-on:click="jian">-</button>
     </div>
     <script>
         var vm = new Vue({
@@ -30,7 +30,24 @@
             methods: {
                 jia: function() {
                     this.shuliang++;
-                    this.zongjia = this.shuliang * this.danjia
+                    this.zongjia = this.shuliang * this.danjia;
+                },
+                jian: function() {
+                    this.shuliang--;
+                    if (this.shuliang < 0) {
+                        this.shuliang = 0;
+                    }
+                    this.zongjia = this.shuliang * this.danjia;
+                }
+            },
+            watch: {
+                'shuliang': function(newval, oldval) {
+                    // console.log(newval, oldval);
+                    if (this.shuliang > 3 && this.shuliang < 6) {
+                        this.zongjia = this.zongjia - this.danjia;
+                    } else if (this.shuliang >= 6) {
+                        this.zongjia = (this.zongjia - this.danjia) * 0.8;
+                    }
                 }
             }
         });
