@@ -12,17 +12,24 @@
 
 <body>
     <ul id="app">
-        <li></li>
+        <li v-for="(num,item) in items">
+            {{num}}--{{item.message}}
+        </li>
     </ul>
     <script>
-        new Vue({
+        var vm = new Vue({
             el: '#app',
             data: {
-                items: {
-
-                }
+                items: [{
+                    message: "one"
+                }, {
+                    message: "two"
+                }]
             }
-        })
+        });
+        vm.items.push({
+            message: "three"
+        });
     </script>
 </body>
 
