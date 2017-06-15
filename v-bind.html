@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind mode</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .class-A {
+            background-color: red;
+        }
+        
+        .class-B {
+            color: blue;
+        }
+        
+        .class-C {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src="message" alt="">
+        <img :src="message" alt="">
+        <div :class="{red:isRed}">1111</div>
+        <div :class="[classA,classB]">2222</div>
+        <div :class="{'class-A':isA,'class-B':isB}">3333</div>
+
+        <div :class="[classA,{'class-C':isC,'class-B':isB}]">6666</div>
+        <div :style="{fontSize:size+'px'}">5555</div>
+        <div :style="[styleObjectA,styleObjectB]">444</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'images/cat1.jpg',
+                isRed: true,
+                classA: 'class-A',
+                classB: 'class-B',
+                classC: 'class-C',
+                isC: true,
+                isA: true,
+                isB: false,
+                size: 55,
+                styleObjectA: {
+                    color: 'red'
+                },
+                styleObjectB: {
+                    fontSize: '30px'
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>
