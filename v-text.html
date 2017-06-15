@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on mode</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--//不会执行html标签，仅当为字符串v-if用条件语句；大页面用if控制小按钮用show-->
+        <p v-text="message" v-if="isOk"></p>
+        <!--会执行html标签-->
+        <p v-html="message" v-show="isOk"></p>
+        <!--v-show:css控制显示隐藏，显示快。if有预加载，显示速度快，加载慢。show-显示快，加载没多大影响-->
+        <button @click="sh">点击切换</button>
+        <!--<input type="text" @keyup.enter='sh'>-->
+        <input type="text" v-on:keyup.13="sh">
+        <!--v-on=>@   keyup加按键值-->
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: '<h1>hello Eric!</h1>',
+                isOk: true
+            },
+            methods: {
+                sh: function() {
+                    if (this.isOk == true) {
+                        this.isOk = false;
+                    } else {
+                        this.isOk = true;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
