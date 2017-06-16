@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>v2-差值</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>双大括号会将数据解释为纯文本</h3>
+    <span v-once>
+            永远不会变:{{message}}
+        </span>
+    <br>
+    <input type="text" v-model="message">
+    <h3>为了输出真正的 HTML ，你需要使用 v-html 指令</h3>
+    <p v-html="message"></p>
+    <p>{{num+1}}</p>
+    <p v-bind:data-id="'list-' + id" id="btn">这是个啥</p>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: '<h1>不会变的！</h1>',
+            num: 10,
+            show: false,
+            id: 5
+        }
+    });
+    $("#btn").on('click', function (e) {
+        console.log(e);
+    })
+</script>
+</body>
+</html>
