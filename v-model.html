@@ -1,29 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>v-model mode</title>
-    <script src="js/vue.js">
-    </script>
-    <script src="js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
 </head>
-
 <body>
-    <!--表单控件绑定-->
-    <div id="app">
-
+<div id="app">
+    <p>{{message}}</p>
+    <br>
+    <input placeholder="点击输入" type="text" v-model="message">
+    <br>
+    <p>{{message1}}</p>
+    <br>
+    <input placeholder="点击输入1" type="text" v-model="message1">
+    <br>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <br>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+    <br>
+    <div class="demo">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
     </div>
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                message: "Hello Eric"
-            }
-        })
-    </script>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: '',
+            message1: '',
+            checkedNames: [],
+            picked: ''
+        }
+    })
+</script>
 </body>
-
 </html>
