@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>on/bind</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <div>
+        <h1>v-bind缩写</h1>
+        <a v-bind:href="url">百度一下完整语法</a>
+        <br>
+        <a :href="url">v-bind:href缩写省略bind只写:href</a>
+    </div>
+    <div>
+        <h1>v-on缩写</h1>
+        <a v-on:click="clickTo">点击跳转到百度</a>
+        <br>
+        <a @click="clickTo">v-on:click缩写为@click</a>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#container',
+        data: {
+            url: "http://www.baidu.com"
+        },
+        methods: {
+            clickTo: function () {
+                window.location.href = "http://www.baidu.com"
+            }
+        }
+    })
+</script>
+</body>
+</html>
