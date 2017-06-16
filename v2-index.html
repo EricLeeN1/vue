@@ -37,8 +37,19 @@
             <br>
             <button v-on:click="reverseMessage">逆转消息</button>
         </div>
+        <div>
+            <h1>组件化应用构建</h1>
+            <ol>
+                <todo-item v-for="item in todos" v-bind:todo="item"></todo-item>
+            </ol>
+        </div>
     </div>
     <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            //prop类似于一个自定义属性这个属性名为todo
+            template: '<li>{{ todo.text }}</li>'
+        });
         new Vue({
             el: '#app',
             data: {

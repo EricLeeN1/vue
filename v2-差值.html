@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>双大括号会将数据解释为纯文本</h3>
+        <span v-once>
+            永远不会变:{{message}}
+        </span>
+        <br>
+        <input type="text" v-model="message">
+        <h3>为了输出真正的 HTML ，你需要使用 v-html 指令</h3>
+        <p v-html="message"></p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '<h1>不会变的！</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>
