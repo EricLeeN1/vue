@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>vue 指令</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="seen">现在你看到我了</p>
+    <br>
+    <a v-bind:href="url">百度一下</a>
+    <!--//v-bind指令绑定属性与值-->
+    <br>
+    <!--//v-on用于监听DOM事件-->
+    <a v-on:click="">点击一下</a>
+    <br>
+    <h1>修饰符</h1>
+    以.指明的特殊后缀，用于支出一个指令应该以特殊方式绑定，如.prevent修饰符告诉v-on指令对于触发的事件调用event.preventDefault();
+    <form v-on:submit.prevent="onSubmit"></form>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            seen: true,
+            url: 'http://www.baidu.com'
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>
