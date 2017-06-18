@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>列表渲染</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<h3>v-for拥有对父作用域属性的完全访问权限，还支持一个可选的第二个参数为当前项的索引</h3>
+<ul id="container">
+    <li v-for="(item,index) in items">
+        {{parentMessage}}-{{index}}-{{value}}-{{key}}-{{item.message}}
+    </li>
+    <li>模板循环</li>
+    <template v-for="item in items">
+        <li>{{item.name}}</li>
+        <li>{{item.message}}</li>
+        <li>{{item.age}}</li>
+    </template>
+    <li>对象迭代,数组第一个</li>
+    <li v-for="value in items[0]">
+        {{value}}
+    </li>
+</ul>
+<script>
+    new Vue({
+        el: "#container",
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {message: '001', name: '0001', age: '10'},
+                {message: '002', name: '0002', age: '12'},
+                {message: '003', name: '0002', age: '14'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
