@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>class与style绑定</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+        .active {
+            background: red;
+        }
+
+        .text-danger {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <h3>绑定class</h3>
+    <h5>
+        对象语法
+        <div v-on:click="change" class="static" v-bind:class="{active:isActive,'text-danger':hasError}">
+            点击切换状态
+        </div>
+        <div v-on:click="classObject" class="static" v-bind:class="classObject">
+            点击切换状态
+        </div>
+    </h5>
+    <h5>
+        数组语法
+        <div v-bind:class="[activeClass,errorClass]">数组语法</div>
+    </h5>
+    <h3>style</h3>
+    <h5>对象语法
+        <div v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">
+            内联样式
+        </div>
+        <div v-bind:style="colorFontSize">内联样式2</div>
+    </h5>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#container",
+        data: {
+            activeColor: 'red',
+            fontSize: '20',
+            colorFontSize: {
+                color: 'red',
+                fontSize: '20px'
+            },
+            isActive: false,
+            hasError: false,
+            classObject: {
+                active: true,
+                'text-danger': true
+            },
+            activeClass: 'active',
+            errorClass: 'text-danger'
+        },
+        methods: {
+            change: function () {
+                this.isActive = !this.isActive;
+                this.hasError = !this.hasError;
+            }
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal',
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

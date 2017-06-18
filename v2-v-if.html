@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>v2-if</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <h3>v-if条件渲染</h3>
+    <h5>
+        <div v-if="Math.random() > 0.9">大于0.9</div>
+        <div v-else-if="Math.random() > 0.6">大于0.6小于0.9</div>
+        <div v-else>小于0.3</div>
+        <template v-if="Math.random() > 0.5">
+            <h1>大于0.5显示的模板标题</h1>
+            <p>段落1</p>
+            <p>段落2</p>
+        </template>
+        <template v-else>
+            <h1>小于0.5显示的模板标题</h1>
+            <p>段落1</p>
+            <p>段落2</p>
+        </template>
+        <div>
+            v-show用法同v-if
+            <table border="1">
+                <tr>
+                    <td></td>
+                    <td>区别</td>
+                </tr>
+                <tr>
+                    <td>v-if</td>
+                    <td>
+                        1.真正的条件渲染
+                        <br>
+                        2.惰性的，若初始条件为假，只有第一次变真时，才开始渲染
+                        <br>
+                        3.更高的切换开销，如果在运行时条件不太可能改变用if
+                    </td>
+                </tr>
+                <tr>
+                    <td>v-show</td>
+                    <td>
+                        1.带有v-show的元素始终会被渲染并保留在DOM中，v-show是简单的切换css的display
+                        <br>
+                        2.初始总会渲染，但是只是基于css的简单切换
+                        <br>
+                        3.更高的初始渲染开销，如果需要非常频繁的切换用show
+                    </td>
+                </tr>
+            </table>
+            <h1>tips：v-if与v-for一起使用时，v-for比v-if优先级更高</h1>
+        </div>
+    </h5>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#container",
+        data: {}
+    })
+</script>
+</body>
+</html>
