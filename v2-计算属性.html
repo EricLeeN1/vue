@@ -10,22 +10,55 @@
 <body>
 <div id="container">
     <div>
-        <h1>基础例子</h1>
-        <p>原始信息:{{message}}</p>
-        <p>计算反转后的信息:{{reversedMessage}}</p>
+        <h3>基础例子</h3>
+        <p>原始信息:"{{message}}"</p>
+        <p>计算反转后的信息:"{{reversedMessage()}}"</p>
     </div>
     <div>
-        <h1>计算属性 vs Methods</h1>
-
+        <h3>计算属性 vs Methods</h3>
+        <p>当前时间毫秒数:{{now}}</p>
+    </div>
+    <div>
+        <h3>computed属性vs Watched属性</h3>
+        <p>名字:{{firstName}}</p>
+        <p>姓氏:{{lastName}}</p>
+        <p>全名:{{fullName}}</p>
+    </div>
+    <div>
+        <h3>setter</h3>
+        <p></p>
     </div>
 </div>
 <script>
     var vm = new Vue({
         el: "#container",
         data: {
+            firstName: 'Eric',
+            lastName: 'Lee',
             message: "hello"
         },
         computed: {
+            reversedMessage: function () {
+                return this.message.split('').reverse().join('');
+            },
+            now: function () {
+                return Date.now();
+            },
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            fullName1: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                set: function (newValue) {
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        },
+        methods: {
             reversedMessage: function () {
                 return this.message.split('').reverse().join('');
             }
