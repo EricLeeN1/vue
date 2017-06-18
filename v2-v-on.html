@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>事件处理器</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <div style="border:red solid 1px;">
+        <h3>用v-on监听dom事件</h3>
+        <button v-on:click="count+=1">点击加1</button>
+        <p>按钮被点击了{{count}}次!</p>
+    </div>
+    <div style="border: blue solid 1px;">
+        <h3>用v-on接受一个定义的方法来用</h3>
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <div style="border: red solid 1px;">
+        <h3>内联处理器方法</h3>
+        <button v-on:click="say('hi')">点击试试</button>
+    </div>
+    <div style="border: blue solid 1px;">
+        <h3>时间修饰符</h3>
+        <!-- 阻止单击事件冒泡 -->
+        <a v-on:click.stop="doThis">阻止单击事件冒泡</a>
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit">提交事件不再重载页面</form>
+        <!-- 修饰符可以串联  -->
+        <a v-on:click.stop.prevent="doThis">修饰符可以串联</a>
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent>只有修饰符</form>
+        <!-- 添加事件侦听器时使用事件捕获模式 -->
+        <div v-on:click.capture="doThis">添加事件侦听器时使用事件捕获模式</div>
+        <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+        <div v-on:click.self="doThis">只当事件在该元素本身（而不是子元素）触发时触发回调</div>
+        <a v-on:click.stop="doThis">阻止冒泡</a>
+    </div>
+    <div style="border: red solid 1px;">
+        <h3>按键修饰符</h3>
+        <div>
+            v-on:keyup(下同).enter或@keyup.enter
+            .tab
+            .delete (捕获 “删除” 和 “退格” 键)
+            .esc
+            .space
+            .up
+            .down
+            .left
+            .right
+            <p>新增
+                .ctrl
+                .alt
+                .shift
+                .meta
+            </p>
+        </div>
+        <p>
+            可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+        </p>
+        <div>可以使用 v-on:keyup.f1
+            Vue.config.keyCodes.f1 = 112
+        </div>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#container",
+        data: {
+            count: 0,
+            name: "Eric"
+        },
+        methods: {
+            greet: function (event) {
+                console.log(event);
+                alert("Hello" + this.name + '!');
+                alert(event.target.tagName);
+            },
+            say: function (msg) {
+                alert(msg);
+            },
+            doThis: function () {
+                console.log("aaa");
+            }
+        }
+    })
+</script>
+</body>
+</html>
