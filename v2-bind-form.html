@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>表单控件绑定</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <div>
+        <h3>v-model指令在表单控件元素上创建双向数据绑定</h3>
+        <h4>文本</h4>
+        <input v-model="message" placeholder="输入吧!">
+        <br>
+        <p>Message is:{{message}}</p>
+    </div>
+    <div>
+        <h4>多行文本</h4>
+        <p style="white-space: pre;">{{message}}</p>
+        <textarea v-model="message" placeholder="添加多选线!"></textarea>
+    </div>
+    <div>
+        <h4>复选框</h4>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+    </div>
+    <div>
+        <h4>多个钩选框</h4>
+        <input value="Lee" id="Lee" type="checkbox" v-model="checkedNames">
+        <label for="Lee">Lee</label>
+        <input value="Zhang" id="Zhang" type="checkbox" v-model="checkedNames">
+        <label for="Zhang">Zhang</label>
+        <input value="Zhao" id="Zhao" type="checkbox" v-model="checkedNames">
+        <label for="Zhao">Zhao</label>
+        <input value="Wang" id="Wang" type="checkbox" v-model="checkedNames">
+        <label for="Wang">Wang</label>
+        <br>
+        <span>Check Names:{{checkedNames}}</span>
+    </div>
+    <div>
+        <h4>单选按钮</h4>
+        <input type="radio" id="one" value="one" v-model="picked">
+        <label for="one">one</label>
+        <br>
+        <input type="radio" id="two" value="two" v-model="picked">
+        <label for="two">two</label>
+        <br>
+        <span>Picked:{{picked}}</span>
+    </div>
+    <div>
+        <h4>单选列表</h4>
+        <select name="select" id="select" v-model="selected">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <span>Selected:{{selected}}</span>
+    </div>
+    <div>
+        <h4>多选列表</h4>
+        <select name="select2" id="select2" v-model="selected2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <span>Selected:{{selected2}}</span>
+    </div>
+    <div>
+        <h4>修饰符</h4>
+        .lazy转变为在change事件中同步
+        .number自动将用户输入的值转为Number
+        .trim自动过滤用户输入的首尾空格
+    </div>
+</div>
+<script>
+    new Vue({
+            el: "#container",
+            data: {
+                message: '呵呵哒!',
+                checkedNames: [],
+                picked: '',
+                selected: null,
+                selected1: []
+            }
+        }
+    )
+</script>
+</body>
+</html>
