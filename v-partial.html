@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>v-partial mode</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <partial name="my-div"></partial>
+</div>
+<script>
+    Vue.partial('my-div', '<p>my-div-1</p>');
+    new Vue({
+        el: '#app',
+        data: {
+            num: '1'
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

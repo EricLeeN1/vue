@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>v-DIY mode</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-eric:val.red.border="num">
+    <button @click="sj"></button>
+</div>
+<script>
+    //三个时态
+    Vue.directive('eric', {
+        bind: function (value) {
+//            this.el.style.color="#ff6600";
+        },
+        update: function (newValue, oldValue) {
+            console.log(this.name);
+            console.log(this.expression);
+            console.log(this.arg);
+            console.log(this.modifiers);
+            var jsonObj = this.modifiers;
+            console.log(jsonObj.red);
+            this.el.value = '111';
+            console.log("我被更新了");
+        },
+        unbind: function () {
+
+        }
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            num: '1'
+        },
+        methods: {
+            sj: function () {
+                this.num++;
+            }
+        }
+    });
+</script>
+</body>
+</html>
