@@ -84,5 +84,32 @@
 				2. 可以提供第二个的参数为键名->
 				`v-for='(value,key) in object'`
 				3. 第三个参数为索引
-				`v-for='(value,key,inidex) in object'`
+				`v-for='(value,key,inidex) in objec'`
+			3. v-for 迭代整数
+				1. v-for也可以循环整数->`v-for='n in 10'`
 
+## Vue.js--计算属性
+
+### 计算属性关键词：computed
+
+	1. methods vs computed
+		效果上是一样的，
+		但是computed基于他的依赖缓存，只有相关依赖改变时才会重新取值，
+		methods在重新渲染的时候，函数总会重新调用执行
+	2. computed setter
+		computed属性默认只有getter,不过在需要时你可以提供一个setter
+
+## Vue.js--样式绑定
+	
+	1. class属性绑定-> v-bind:class
+		1. v-bind:class设置了一个对象,从而动态的切换class
+		2. 绑定返回对象的计算属性
+	2. style绑定-> v-bind:style
+		1. v-bind:style直接设置样式
+		2. 或者绑定一个样式对象，让模板更清晰
+		3. 可以使用数组将对个样式对象应用到一个元素上
+		4. 需要使用特定前缀的css属性时,会自动侦测并添加相应的前缀
+
+## Vue.js--事件处理器
+	v-on
+	
