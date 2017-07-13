@@ -111,5 +111,37 @@
 		4. 需要使用特定前缀的css属性时,会自动侦测并添加相应的前缀
 
 ## Vue.js--事件处理器
-	v-on
 	
+	1. v-on事件监听->
+	2. 事件修饰符->处理DOM事件细节，如event.preventDefault() 或 event.stopPropagation()。通过由点(.)表示的指令后缀来调用修饰符
+		1. v-on：click.stop='doThis'->阻止单击事件冒泡
+		2. v-on：submit.prevent='onSubmit'->提交时间不再重载页面
+		3. v-on:click.stop.prevent='doThis'->修饰符可以串联
+		4. v-on:submit.prevent->只有修饰符
+		5. v-on:click.capture='doThis'->添加事件侦听器时使用事件捕获模式
+		6. v-on:click.self='doThis'->只当事件在该元素本身（而不是子元素）触发时触发回调
+		7. v-on:click.once='doThis'->click事件至少触发一次
+	3. 按键修饰符->为v-on在监听键盘事件时添加按键修饰符v-on:keyup.enter
+		1. 基础
+			1. v-on:keyup.13='submit'
+		2. 为常用按键提供了别名
+			1. v-on:keyup.enter='submit'->同上
+			2. @keyup.enter='submit'->同上的缩写
+		3. 全部按键别名
+			1. .enter
+			2. .tab
+			3. .delete(捕获'删除'和'退格'键)
+			4. .esc
+			5. .space
+			6. .up
+			7. .down
+			8. .left
+			9. .right
+			10. .ctrl
+			11. .alt
+			12. .shift
+			13. .meta
+		4. 实例
+			1. @keyup.alt.67
+			2. @click.ctrl
+		
