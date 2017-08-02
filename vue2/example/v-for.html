@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue2.0</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(item,num) in items2">
+                {{num}}--{{item.message}}
+            </li>
+        </ul>
+          <ul>
+            <li v-for="(item,num) in items">
+                {{num}}--{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items2: [{
+                    message: "one"
+                }, {
+                    message: "two"
+                }],
+                items:[1,2,23,412,233,6,0]
+            },
+            computed:{
+              sortItems:function(){
+                return this.items.sort(sortNumber);
+              }
+            }
+        });
+        vm.items2.push({
+            message: "three"
+        });
+        function sortNumber(a,b){
+          return a-b;
+        }
+    </script>
+</body>
+
+</html>
