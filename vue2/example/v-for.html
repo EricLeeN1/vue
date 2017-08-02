@@ -13,13 +13,13 @@
     <h1>Vue2.0</h1>
     <div id="app">
         <ul>
-            <li v-for="(item,num) in items2">
-                {{num}}--{{item.message}}
+            <li v-for="(item,index) in items2">
+                {{index+1}}--{{item.message}}
             </li>
         </ul>
           <ul>
-            <li v-for="(item,num) in items">
-                {{num}}--{{item}}
+            <li v-for="(item,index) in sortItems">
+                {{index+1}}--{{item}}
             </li>
         </ul>
     </div>
