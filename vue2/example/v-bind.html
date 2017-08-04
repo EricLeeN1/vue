@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,25 +10,21 @@
 </head>
 
 <body>
-<h1>v-bind实例</h1>
-<div id="app">
-    <br>
-    <p><a :href="src" target="_blank">cat</a></p>
-    <p><img v-bind:src="src" alt=""></p>
-    <hr>
-    <div>1.绑定Class</div>
-</div>
-<style>
-    
-</style>
-<script type="text/javascript">
-    var app = new Vue({
-        el: "#app",
-        data: {
-            src: "../../images/cat1.jpg"
-        }
-    })
-</script>
+    <h1>v-bind实例</h1>
+    <div id="app">
+        <p><img v-bind:src="src" alt=""></p>
+        <br>
+        <p><a :href="url" target="_blank">cat</a></p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                src: "../../images/cat1.jpg"
+            }
+        })
+    </script>
 </body>
 
 </html>
