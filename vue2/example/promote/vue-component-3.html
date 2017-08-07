@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-3父子组件关系</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+<h1>vue-component-父子组件关系</h1>
+<hr>
+<h3>1.构造器外部写局部注册组件</h3>
+<div id="app">
+    <eric></eric>
+</div>
+<script type="text/javascript">
+    var cityComponent = {
+        template: `<div style="color: blue">Eric form Lingbao</div>`
+    };
+    var ericComponent = {
+        template: `
+        <div>
+            <p style="color: red">Eric form Henan</p>
+            <city></city>
+        </div>`,
+        components: {
+            "city": cityComponent
+        }
+    };
+    var app = new Vue({
+        el: "#app",
+        components: {
+            "eric": ericComponent
+        }
+    });
+</script>
+</body>
+
+</html>

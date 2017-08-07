@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-组件2</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+<h1>vue-component-组件2</h1>
+<hr>
+<div id="app">
+    <Lee :from-here="message"></Lee>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Lingbao"
+        },
+        components: {
+            "Lee": {
+                template: '<h1 style="color: red;">Eric from {{fromHere}}</h1>',
+                props: ["fromHere"]//css或者属性有横线要用小驼峰法
+            }
+        }
+    });
+</script>
+</body>
+
+</html>
