@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods Option方法选项</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+<h1>methods Option方法选项</h1>
+<div id="app">
+    <h1>{{a}}</h1>
+    <p>
+        <button @click="numAdd(2,$event)">点击+</button>
+    </p>
+    <p>
+        <btn @click.native="numAdd(2,$event)"></btn>
+    </p>
+</div>
+<button onclick="app.numAdd(3,event)">外部add</button>
+
+<script type="text/javascript">
+    var btn = {
+        template:`<button>组件add</button>`
+    }
+    var app = new Vue({
+        el: "#app",
+        data: {
+            a: 8
+        },
+        components:{
+            "btn":btn
+        },
+        methods: {
+            numAdd: function (num, event) {//event参数其实不常用
+                if (num != '') {
+                    this.a += num;
+                } else {
+                    this.a++;
+                }
+                console.log(event);
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed Option计算选项</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+<h1>computed Option计算选项</h1>
+<div id="app">
+    <h1>{{newPrice}}</h1>
+    <ol>
+        <li v-for="(item,index) in reverseNews">
+          {{index+1}}--{{item.title}}--{{item.date}}
+        </li>
+    </ol>
+</div>
+
+<script type="text/javascript">
+    var newsList = [
+        {title:'中方警告印“打消幻想” 媒体：解放军似已箭在弦上', date:'2017年8月9日09:42:08'},
+        {title:'精神卫生法第一案:患者诉监护人和院方获准出院', date:'2017年8月8日09:42:08'},
+        {title:'女护士因给患者输液遭男子掌掴 还为动粗者求情', date:'2017年8月7日09:42:08'},
+        {title:'男子因琐事刺伤邻居致其死亡 潜逃25年被抓', date:'2017年8月6日09:42:08'}
+    ];
+    var app = new Vue({
+        el: "#app",
+        data: {
+            price: 100,
+            newsList: newsList
+        },
+        computed: {
+            newPrice: function () {//并没有改变原始数据的price值。没有污染
+                return this.price = '￥' + this.price + '元';
+            },
+            reverseNews:function () {
+                return this.newsList.reverse();
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
