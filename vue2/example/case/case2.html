@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue2实例方法-2</title>
+    <script src="../../assets/js/vue.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>Vue2.0实例方法-2</h1>
+<div id="app">
+
+</div>
+<p>
+    <button onclick="destroy()">销毁</button>
+</p>
+<p>
+    <button onclick="reload()">刷新-重载</button>
+</p>
+<p>
+    <button onclick="tick()">更改数据</button>
+</p>
+<ol>
+    <li>$mount挂载方法</li>
+    <li>$destroy()销毁方法</li>
+    <li>$forceUpdate()更新方法</li>
+    <li>$nextTick()数据修改方法</li>
+</ol>
+<script type="text/javascript">
+    var eric = Vue.extend({
+        template: '<p>{{message}}</p>',
+        data: function () {
+            return {
+                message: 'Hello,I m Eric'
+            }
+        },
+        mounted: function () {
+            console.log('mounted被创建');
+        },
+        destroyed: function () {
+            console.log('已经被销毁了');
+        },
+        updated: function () {
+            console.log('已经更新了');
+        }
+    });
+    var vm = new eric().$mount('#app');
+    function destroy() {
+        vm.$destroy();
+    }
+    function reload() {
+        vm.$forceUpdate();
+    }
+    function tick() {
+        vm.message = '加油好好干';
+        vm.$nextTick(function () {
+            console.log('更新了');
+        });
+    }
+</script>
+</body>
+
+</html>
