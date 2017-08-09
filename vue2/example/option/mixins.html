@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mixins option</title>
+    <script src="../../assets/js/vue.js"></script>
+</head>
+
+<body>
+<h1>mixins option</h1>
+<hr>
+<div id="app">
+    <p>今日温度:{{wendu}}</p>
+    <p>衣服推荐:{{chuanyi}}</p>
+    <p>
+        <button @click="add">升高温度</button>
+        <button @click="reduce">降低温度</button></p>
+</div>
+
+<script type="text/javascript">
+    var chuanyiArray=['短袖热裤','夹克长裙','呢子大衣','羽绒套装'];
+    var app = new Vue({
+        el:"#app",
+        data:{
+            wendu:15,
+            chuanyi:'夹克长裙'
+        },
+        methods:{
+            add:function () {
+                this.wendu+=5;
+            },
+            reduce:function () {
+                this.wendu-=5;
+            }
+        },
+//        watch:{
+//            wendu:function (newVal,oldVal) {
+//                if (newVal>=25) {
+//                    this.chuanyi=chuanyiArray[0];
+//                }else if(newVal>=10){
+//                    this.chuanyi=chuanyiArray[1];
+//                }else if(newVal>=-5){
+//                    this.chuanyi=chuanyiArray[2];
+//                }else{
+//                    this.chuanyi=chuanyiArray[3];
+//                }
+//            }
+//        }
+    });
+    app.$watch('wendu',function (newVal,oldVal) {
+        if (newVal>=25) {
+            this.chuanyi=chuanyiArray[0];
+        }else if(newVal>=10){
+            this.chuanyi=chuanyiArray[1];
+        }else if(newVal>=-5){
+            this.chuanyi=chuanyiArray[2];
+        }else{
+            this.chuanyi=chuanyiArray[3];
+        }
+    });
+</script>
+</body>
+
+</html>
